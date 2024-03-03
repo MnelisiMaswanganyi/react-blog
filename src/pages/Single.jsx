@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Edit from "../img/edit.png";
-import Delete from "../img/delete.png";
+import Delete from "./img/delete.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Menu from "../components/Menu";
 import axios from "axios";
