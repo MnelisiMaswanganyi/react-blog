@@ -7,6 +7,18 @@ import {
   import single from "./pages/single"
   import write from "./pages/write"
   import home from "./pages/home"
+  import NavBar from "./components/NavBar"
+  import footer from "./components/footer"
+
+  const Layout = () => {
+    return (
+      <>
+      <NavBar/>
+      <Outlet/>
+      <footer/>
+      </>
+    );
+  };
 
   const router = createBrowserRouter([
     {
@@ -40,6 +52,6 @@ import {
     );
     }
 
-    const 
+    
     
     export default App;
