@@ -1,57 +1,65 @@
 import {
-    createBrowserRouter,
-    RouterProvider,
-  } from "react-router-dom";
-  import register from "./pages/register"
-  import login from "./pages/login"
-  import single from "./pages/single"
-  import write from "./pages/write"
-  import home from "./pages/home"
-  import NavBar from "./components/NavBar"
-  import footer from "./components/footer"
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Outlet,
+} from "react-router-dom";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import Write from "./pages/Write";
+import Home from "./pages/Home";
+import Single from "./pages/Single";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import "./style.css"
 
-  const Layout = () => {
-    return (
-      <>
-      <NavBar/>
-      <Outlet/>
-      <footer/>
-      </>
-    );
-  };
+const Layout = () => {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <div>This is home!</div>,
-    },
-    {
-        path: "/register",
-        element: <div>This is Register!</div>,
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
       },
       {
-        path: "/login",
-        element: <div>This is login!</div>,
-      },
-      {
-        path: "/single",
-        element: <div>This is single!</div>,
+        path: "/post/:id",
+        element: <Single />,
       },
       {
         path: "/write",
-        element: <div>This is write!</div>,
+        element: <Write />,
       },
-    
-  ]);
+    ],
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+]);
 
-  function  App() {
-    return (
-      <div>
-<RouterProvider router={router}/>
+function App() {
+  return (
+    <div className="app">
+      <div className="container">
+        <RouterProvider router={router} />
       </div>
-    );
-    }
+    </div>
+  );
+}
 
-    
-    
-    export default App;
+export default App;
